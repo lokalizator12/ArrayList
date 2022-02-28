@@ -9,14 +9,24 @@ public class CarLinkedList implements CarList {
         return getNode(index).value;
     }
 
+
     @Override
-    public void add(Car car, int index) {
+    public boolean contains(Car car) {
+        Node node = first;
+        for (int i = 0; i < size; i++) {
+            node = node.next;
+            return false;
+        }
+    }
+
+    @Override
+    public boolean add(Car car, int index) {
         if (index < 0 || index > size) {
             throw new IndexOutOfBoundsException();
         }
         if (size == index) {
             add(car);
-            return;
+            return true;
         }
         Node nodeElement = getNode(index); //3
         Node nodePrevious = nodeElement.previous; //2
@@ -28,10 +38,11 @@ public class CarLinkedList implements CarList {
             first = newNode;
         }
         size++;
+        return true;
     }
 
     @Override
-    public void add(Car car) {
+    public boolean add(Car car) {
         if (size == 0) {
             first = new Node(null, car, null);
             last = first;
@@ -41,6 +52,7 @@ public class CarLinkedList implements CarList {
             secondLast.next = last;
         }
         size++;
+        return true;
     }
 
     @Override

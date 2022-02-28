@@ -17,6 +17,11 @@ public class CarHashSet implements CarSet {
     return result;
     }
 
+    @Override
+    public boolean contains(Car car) {
+        int position = getIndexElement(car, array.length);
+        return position < 0;
+    }
 
     public boolean add(Car car, Entry[] dts){
         int position = getIndexElement(car, dts.length);
@@ -89,6 +94,9 @@ public class CarHashSet implements CarSet {
     }
 
     public int getIndexElement(Car car, int arrayLength) {
+        if (car == null){
+            return -1;
+        }
         return Math.abs(car.hashCode() % arrayLength);
     }
 
