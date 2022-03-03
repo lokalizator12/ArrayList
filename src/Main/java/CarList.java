@@ -7,6 +7,4 @@ public interface CarList extends Collection{
     boolean removeAt(int index);
     int size();
     void clear();
-    boolean contains();
-
 }

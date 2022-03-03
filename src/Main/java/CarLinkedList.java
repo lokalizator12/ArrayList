@@ -12,11 +12,7 @@ public class CarLinkedList implements CarList {
 
     @Override
     public boolean contains(Car car) {
-        Node node = first;
-        for (int i = 0; i < size; i++) {
-            node = node.next;
-            return false;
-        }
+    return findElement(car) != -1;
     }
 
     @Override
@@ -25,8 +21,7 @@ public class CarLinkedList implements CarList {
             throw new IndexOutOfBoundsException();
         }
         if (size == index) {
-            add(car);
-            return true;
+            return add(car);
         }
         Node nodeElement = getNode(index); //3
         Node nodePrevious = nodeElement.previous; //2
@@ -57,13 +52,10 @@ public class CarLinkedList implements CarList {
 
     @Override
     public boolean remove(Car car) {
-        Node node = first;
-        for (int i = 0; i < size; i++) {
-                if (node.value.equals(car)) {
-                    return removeAt(i);
-                }
-                node = node.next;
-            }
+        int index = findElement(car);
+        if (index != -1) {
+            return removeAt(index);
+        }
         return false;
     }
 
@@ -96,6 +88,18 @@ public class CarLinkedList implements CarList {
         first = null;
         last = null;
         size = 0;
+
+    }
+
+    private int findElement(Car car){
+        Node node = first;
+        for (int i = 0; i < size; i++) {
+            if (node.value.equals(car)) {
+                return i;
+            }
+            node = node.next;
+        }
+        return -1;
 
     }
 

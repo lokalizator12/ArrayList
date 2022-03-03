@@ -3,5 +3,5 @@ public interface CarSet extends Collection{
     boolean remove(Car car);
     int size();
     void clear();
-    boolean contains();
+
 }

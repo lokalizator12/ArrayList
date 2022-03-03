@@ -1,16 +1,16 @@
 import java.util.Arrays;
 
 public class CarArrayList implements CarList {
+
     private Car[] arrayCar = new Car[10];
     private int size = 0;
 
     @Override
     public boolean contains(Car car) {
-        for (Car cars : arrayCar) {
-            if (cars.equals(car)) {
+        for (int i = 0; i < size; i++) {
+            if (arrayCar[i].equals(car)) {
                 return true;
             }
-
         }
         return false;
     }
