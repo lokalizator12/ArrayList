@@ -9,7 +9,7 @@ public class CollectionTest {
 
     @Before
     public void setUp() throws Exception {
-        CarCollection = new CarLinkedList();
+        CarCollection = new CarArrayList();
         for (int i = 0; i < 100; i++) {
             CarCollection.add(new Car("Brand" + i, i));
         }
@@ -20,6 +20,13 @@ public class CollectionTest {
         assertTrue(CarCollection.contains(new Car("Brand20", 20)));
         assertFalse(CarCollection.contains(new Car("Brand2000",900)));
     }
-
+    @Test
+    public void testForeach(){
+        int index = 0;
+        for (Car car: CarCollection) {
+            index++;
+        }
+        assertEquals(100,index);
+    }
 
 }

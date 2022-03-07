@@ -1,4 +1,4 @@
-public interface Collection {
+public interface Collection extends Iterable<Car> {
 
    boolean add(Car car);
    boolean remove(Car car);
