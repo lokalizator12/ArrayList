@@ -72,7 +72,7 @@ public class CarArrayList implements CarList {
 
             @Override
             public Car next() {
-                return arrayCar[index];
+                return arrayCar[index++];
             }
         };
     }
