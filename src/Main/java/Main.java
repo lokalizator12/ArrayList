@@ -3,12 +3,17 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        Collection cars = new CarArrayList();
-        for (int i = 0; i <= 10; i++) {
-            cars.add(new Car("Brand" + i, i));
+       Set<Integer> cars = new TreeSet<>(new Comparator<Integer>() {
+           @Override
+           public int compare(Integer o1, Integer o2) {
+               return -o1.compareTo(o2);
+           }
+       });
+        for (int i = 0; i < 100; i++) {
+            cars.add((int) (Math.random() * 10));
         }
-        for (Car car : cars) {
-            System.out.println(car.getBrand() + " " + car.getNumber());
+        for (Integer car : cars) {
+            System.out.println(car);
         }
     }
 }
