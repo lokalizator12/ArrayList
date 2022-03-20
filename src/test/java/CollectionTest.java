@@ -5,11 +5,11 @@ import static org.junit.Assert.*;
 
 public class CollectionTest {
 
-    private Collection CarCollection;
+    private Collection<Car> CarCollection;
 
     @Before
     public void setUp() throws Exception {
-        CarCollection = new CarArrayList();
+        CarCollection = new CarArrayList<>();
         for (int i = 0; i < 100; i++) {
             CarCollection.add(new Car("Brand" + i, i));
         }

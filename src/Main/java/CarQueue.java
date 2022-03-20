@@ -1,7 +1,7 @@
-public interface CarQueue extends Collection{
+public interface CarQueue<T> extends Collection<T>{
     boolean add();
 
-    Car peek();
+    T peek();
 
-    Car poll();
+    T poll();
 }

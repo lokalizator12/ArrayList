@@ -1,13 +1,13 @@
 import java.util.Arrays;
 import java.util.Iterator;
 
-public class CarArrayList implements CarList {
+public class CarArrayList<T> implements CarList<T> {
 
-    private Car[] arrayCar = new Car[10];
+    private Object[] arrayCar = new Object[10];
     private int size = 0;
 
     @Override
-    public boolean contains(Car car) {
+    public boolean contains(T car) {
         for (int i = 0; i < size; i++) {
             if (arrayCar[i].equals(car)) {
                 return true;
@@ -17,13 +17,13 @@ public class CarArrayList implements CarList {
     }
 
     @Override
-    public Car get(int index) {
+    public T get(int index) {
         indexIsCorrect(index);
-        return arrayCar[index];
+        return (T) arrayCar[index];
     }
 
     @Override
-    public boolean add(Car car) {
+    public boolean add(T car) {
         increaseArray();
         arrayCar[size] = car;
         size++;
@@ -31,7 +31,7 @@ public class CarArrayList implements CarList {
     }
 
     @Override
-    public boolean add(Car car, int index) {
+    public boolean add(T car, int index) {
         increaseArray();
         if(index > size || index < 0){
             throw new IndexOutOfBoundsException();
@@ -43,7 +43,7 @@ public class CarArrayList implements CarList {
     }
 
     @Override
-    public boolean remove(Car car) {
+    public boolean remove(T car) {
         for (int i = 0; i < size; i++) {
             if (arrayCar[i].equals(car)) {
                 return removeAt(i);
@@ -62,8 +62,8 @@ public class CarArrayList implements CarList {
     }
 
     @Override
-    public Iterator<Car> iterator() {
-        return new Iterator<Car>() {
+    public Iterator<T> iterator() {
+        return new Iterator<T>() {
             int index = 0;
             @Override
             public boolean hasNext() {
@@ -71,8 +71,8 @@ public class CarArrayList implements CarList {
             }
 
             @Override
-            public Car next() {
-                return arrayCar[index++];
+            public T next() {
+                return (T) arrayCar[index++];
             }
         };
     }
@@ -85,7 +85,7 @@ public class CarArrayList implements CarList {
     @Override
     public void clear() {
         size = 0;
-        arrayCar = new Car[0];
+        arrayCar = new Object[0];
 
     }
 

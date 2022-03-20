@@ -4,11 +4,11 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class CarSetTest {
-    private CarSet car1;
+    private CarSet<Car> car1;
 
     @Before
     public void setUp() throws Exception {
-        car1 = new CarHashSet();
+        car1 = new CarHashSet<>();
         for (int i = 0; i < 100; i++) {
             car1.add(new Car("Brand" + i, i));
         }

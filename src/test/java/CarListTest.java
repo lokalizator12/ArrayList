@@ -4,11 +4,11 @@ import static org.junit.Assert.*;
 
 public class CarListTest {
 
-    private CarList car1;
+    private CarList<Car> car1;
 
     @org.junit.Before
     public void setUp() throws Exception {
-        car1 = new CarArrayList();
+        car1 = new CarArrayList<>();
         for (int i = 0; i < 100; i++) {
             car1.add(new Car("Brand" + i, i));
         }
